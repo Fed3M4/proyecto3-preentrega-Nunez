@@ -7,7 +7,9 @@ const sector = document.getElementById('sector');
 const nroOperacion = document.getElementById('operation');
 const descripcion = document.getElementById('descrip');
 
-const IDReclamo = document.getElementById('IDReclamo');
+//const IDReclamo = document.getElementById('IDReclamo');
+const nroReclamo = [0]
+const IDReclamo = [];
 const delSector = document.getElementById('delSector');
 const solicitante = document.getElementById('solicitante');
 const info = document.getElementById('info');
@@ -17,9 +19,95 @@ formulario.addEventListener('submit', (e) => {
     obtenerReclamoNuevo();
 })
 
+const obtenerID = () => {
+    let terminado = false;
+    //let ultimoNroReclamo = nroReclamo[nroReclamo.lenght - 1]
+
+    do {
+        const sectorSwitch = sector
+        const hacerSerial = () => {
+            let ultimoNroReclamo = nroReclamo[nroReclamo.lenght - 1]
+        }
+        switch (sectorSwitch) {
+            case 'Recargas':
+                ultimoNroReclamo+=1;
+                IDReclamo.push("R" + ultimoNroReclamo);
+                prompt(IDReclamo.lenght)
+                break;
+            case  'SUBE':
+                numeroReclamo+=1;
+                IDReclamo = 'S' + numeroReclamo;
+                reclamo.push({
+                    id: numeroReclamo,
+                    sector: productoReclama,
+                    motivo: descripcion
+                });
+                alert('Tu número de reclamo es: ' + reclamoS);
+                break;
+            case 'Cobro de servicios':
+                ultimoNroReclamo+=1;
+                IDReclamo = 'CS' + numeroReclamo;
+                reclamo.push({
+                    id: numeroReclamo,
+                    sector: productoReclama,
+                    motivo: descripcion
+                });
+                alert('Tu número de reclamo es: ' + reclamoCS);
+                break;
+            case 'Medios de pago':
+                ultimoNroReclamo+=1;
+                IDReclamo = 'MP' + numeroReclamo;
+                reclamo.push({
+                    id: numeroReclamo,
+                    sector: productoReclama,
+                    motivo: descripcion
+                });
+                alert('Tu número de reclamo es: ' + reclamoMP);
+                break;
+            case 'Transferencias':
+                ultimoNroReclamo+=1;
+                IDReclamo = 'T' + numeroReclamo;
+                reclamo.push({
+                    id: numeroReclamo,
+                    sector: productoReclama,
+                    motivo: descripcion
+                });
+                alert('Tu número de reclamo es: ' + reclamoT);
+                break;
+            case 'Plataforma':
+                ultimoNroReclamo+=1;
+                IDReclamo = 'P' + numeroReclamo;
+                reclamo.push({
+                    id: numeroReclamo,
+                    sector: productoReclama,
+                    motivo: descripcion
+                });
+                alert('Tu número de reclamo es: ' + reclamoP);
+                break;
+            case 'App':
+                ultimoNroReclamo+=1;
+                IDReclamo = 'A' + numeroReclamo;
+                reclamo.push({
+                    id: numeroReclamo,
+                    sector: productoReclama,
+                    motivo: descripcion
+                });
+                alert('Tu número de reclamo es: ' + reclamoA);
+                break;
+            default:
+                alert('No elegiste una opción válida')
+                break;
+        }
+
+        terminado = confirm('¿Querés hacer otro reclamo?')
+    } while (terminado);
+
+}
+
 const obtenerReclamoNuevo = () => {
+    IDReclamo2 = IDReclamo[IDReclamo.lenght - 1]
     const reclamo = {
-        IDReclamo: IDReclamo.value,
+        IDReclamo: IDReclamo2,
         sector: sector.value,
         solicitante: nombre.value + " " + apellido.value,
         descripcion: descripcion.value

@@ -100,9 +100,17 @@
                 </div>
               </div>
 
-              <div class="col-8">
-                <label for="section" class="form-label">Sector <span class="text-muted">(Origen)</span></label>
-                <input type="text" class="form-control" id="sector" placeholder="Recargas" value="" required>
+              <div class="form-group col-8">
+                <label for="section">Sector <span class="text-muted">(Origen)</span></label>
+                <select class="form-control" id="sector" value="" required>
+                  <option>Recargas</option>
+                  <option>SUBE</option>
+                  <option>Cobro de servicios</option>
+                  <option>Medios de pagos</option>
+                  <option>Transferencias</option>
+                  <option>Plataforma</option>
+                  <option>App</option>
+                </select>
                 <div class="invalid-feedback">
                   Por favor ingresá un sector válido.
                 </div>
@@ -110,9 +118,9 @@
 
               <div class="col-8">
                 <label for="amount" class="form-label">Nro. de operación</label>
-                <input type="number" class="form-control" id="operation" placeholder="5000000000">
+                <input type="number" class="form-control" id="operation" placeholder="500000000" min="500000000" max="999999999">
                 <div class="invalid-feedback">
-                  Please enter the amount.
+                  Ingresa un monto válido.
                 </div>
               </div>
 
