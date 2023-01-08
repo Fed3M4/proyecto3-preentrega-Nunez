@@ -21,18 +21,16 @@ formulario.addEventListener('submit', (e) => {
 
 const obtenerID = () => {
     let terminado = false;
-    //let ultimoNroReclamo = nroReclamo[nroReclamo.lenght - 1]
+    let ultimoNroReclamo = nroReclamo[nroReclamo.length - 1]
 
     do {
-        const sectorSwitch = sector
-        const hacerSerial = () => {
-            let ultimoNroReclamo = nroReclamo[nroReclamo.lenght - 1]
-        }
+        const sectorSwitch = sector.value
+
         switch (sectorSwitch) {
             case 'Recargas':
                 ultimoNroReclamo+=1;
                 IDReclamo.push("R" + ultimoNroReclamo);
-                prompt(IDReclamo.lenght)
+                console.log(IDReclamo)
                 break;
             case  'SUBE':
                 numeroReclamo+=1;
@@ -105,7 +103,7 @@ const obtenerID = () => {
 }
 
 const obtenerReclamoNuevo = () => {
-    IDReclamo2 = IDReclamo[IDReclamo.lenght - 1]
+    IDReclamo2 = IDReclamo[IDReclamo.length - 1]
     const reclamo = {
         IDReclamo: IDReclamo2,
         sector: sector.value,
