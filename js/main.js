@@ -1,3 +1,4 @@
+
 const formulario = document.getElementById('form');
 
 const nombre = document.getElementById('firstName');
@@ -6,8 +7,6 @@ const apellido = document.getElementById('lastName');
 const sector = document.getElementById('sector');
 const nroOperacion = document.getElementById('operation');
 const descripcion = document.getElementById('descrip');
-
-//const IDReclamo = document.getElementById('IDReclamo');
 const nroReclamo = [0]
 let IDReclamo = "";
 const delSector = document.getElementById('delSector');
@@ -22,15 +21,41 @@ formulario.addEventListener('submit', (e) => {
 function crearCaso() {
     crearNroSeguimiento(sector)
     const reclamo =  new Reclamos(IDReclamo);
-    //obtenerReclamoNuevo(reclamo)
 
     pintarReclamo(reclamo);
 
     guardarReclamoStorage(reclamo);
 
+    almacenarCaso(reclamo)
+
     //Pintar la cantidad de reclamos que hay 
     const cantR = nroReclamo[nroReclamo.length - 1];
     mostrarQReclamos(cantR);
+}
+
+const almacenarCaso = async (caso) => {
+    /*const response = await fetch('/casos' , {
+        method: 'POST',
+        body: JSON.stringify(caso)
+    })
+    const data = await response.json();
+    console.log(data)
+*/
+fetch('/js/casos', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(caso)
+})
+.then(response => response.json())
+.then(data => {
+    console.log('Success:', data);
+})
+.catch((error) => {
+    console.error('Error:', error);
+});
+
 }
 
 const crearNroSeguimiento = () => {
@@ -52,7 +77,6 @@ const crearNroSeguimiento = () => {
             break;
         case 'Medios de pagos':
             generarID();
-            alert('Tu número de reclamo es: ' + reclamoMP);
             break;
         case 'Transferencias':
             generarID();
@@ -97,3 +121,18 @@ const obtenerReclamo = () => {
 }
 
 obtenerReclamo();
+
+//alert de reclamo realizado
+
+const boton = document.querySelector('#form')
+boton.addEventListener('submit', () => {
+    Toastify({
+        text: "Tu reclamo ha sido realizado",
+        duration: 2000,
+        gravity: 'bottom',
+        position: 'left',
+        style:{
+            background: 'linear-gradient(to right, #EA6523, tomato)'
+        }
+        }).showToast();
+}) 
