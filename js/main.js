@@ -68,25 +68,6 @@ const crearNroSeguimiento = () => {
             break;
     }
 }
-/*
-const obtenerReclamoNuevo = (x) => {
-    const reclamo = {
-        IDReclamo: IDReclamo,
-        sector: sector.value,
-        solicitante: x.solicitante,
-        descripcion: descripcion.value
-    };
-
-    const cantR = nroReclamo[nroReclamo.length - 1];
-
-    mostrarQReclamos(cantR);
-
-    pintarReclamo(reclamo);
-
-    guardarReclamoStorage(reclamo);
-}; 
-*/
-
 const pintarReclamo = (reclamo) => {
     IDpintado.innerText = `${reclamo.IDReclamo}`;
     delSector.innerText = `${reclamo.sector}`;
