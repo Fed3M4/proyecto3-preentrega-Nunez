@@ -21,8 +21,16 @@ formulario.addEventListener('submit', (e) => {
 
 function crearCaso() {
     crearNroSeguimiento(sector)
-    const reclamo1 =  new Reclamos(IDReclamo);
-    obtenerReclamoNuevo(reclamo1)
+    const reclamo =  new Reclamos(IDReclamo);
+    //obtenerReclamoNuevo(reclamo)
+
+    pintarReclamo(reclamo);
+
+    guardarReclamoStorage(reclamo);
+
+    //Pintar la cantidad de reclamos que hay 
+    const cantR = nroReclamo[nroReclamo.length - 1];
+    mostrarQReclamos(cantR);
 }
 
 const crearNroSeguimiento = () => {
@@ -42,7 +50,7 @@ const crearNroSeguimiento = () => {
         case 'Cobro de servicios':
             generarID();
             break;
-        case 'Medios de pago':
+        case 'Medios de pagos':
             generarID();
             alert('Tu número de reclamo es: ' + reclamoMP);
             break;
@@ -60,9 +68,8 @@ const crearNroSeguimiento = () => {
             break;
     }
 }
-
+/*
 const obtenerReclamoNuevo = (x) => {
-    console.log(x)
     const reclamo = {
         IDReclamo: IDReclamo,
         sector: sector.value,
@@ -77,7 +84,8 @@ const obtenerReclamoNuevo = (x) => {
     pintarReclamo(reclamo);
 
     guardarReclamoStorage(reclamo);
-};
+}; 
+*/
 
 const pintarReclamo = (reclamo) => {
     IDpintado.innerText = `${reclamo.IDReclamo}`;
